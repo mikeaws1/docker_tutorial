@@ -1,0 +1,10 @@
+language: generic
+sudo: required
+services: 
+  - docker
+before_install:
+  - docker build -t mikeaws1/docker_tutorial -f Dockerfile.dev . 
+
+
+script:
+  - docker run -e CI=true mikeaws1/docker_tutorial npm run test -- --coverage 
