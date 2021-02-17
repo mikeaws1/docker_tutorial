@@ -9,6 +9,7 @@ before_install:
   - chmod 600 travis_rsa
   - ssh-add travis_rsa
 - docker build -t mikeaws1/docker_tutorial -f Dockerfile.dev .
+- docker push mikeaws1/dtutorial mikeaws1/docker_tutorial
 script:
 - docker run -e CI=true mikeaws1/docker_tutorial npm run test -- --coverage
 deploy:
