@@ -15,8 +15,8 @@ script:
 deploy:
   provider: digitalocean
   region: ''
-  app:
-  evn:
-  bucket_name:
+  app: 
+  evn: 
+  bucket_name: 
   on:
     branch: master
