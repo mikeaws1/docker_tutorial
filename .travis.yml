@@ -13,8 +13,15 @@ before_install:
 - docker push mikeaws1/docker_tutorial
 script:
 - docker run -e CI=true mikeaws1/docker_tutorial npm run test -- --coverage
-release:
+#release:
   	#echo ${DOCKER_PASSWORD} | docker login -u ${DOCKER_USERNAME} --password-stdin
   	#docker push dockerhub-user/my-app:${VERSION}
 	  #VERSION=${VERSION} 
-    ./deploy.sh
+#    ./deploy.sh
+
+
+deploy:
+  provider: script
+  script: deploy.sh
+  on:
+    branch: master
