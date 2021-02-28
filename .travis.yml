@@ -15,6 +15,6 @@ script:
 - docker run -e CI=true mikeaws1/docker_tutorial npm run test -- --coverage
 deploy:
   provider: script
-  script: sh deploy.sh
+  script: ./deploy.sh
   on:
     branch: master
