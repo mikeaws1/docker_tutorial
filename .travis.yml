@@ -9,12 +9,12 @@ before_install:
 - chmod 600 travis_rsa
 - ssh-add travis_rsa
 - docker build -t mikeaws1/docker_tutorial -f Dockerfile.dev .
-- docker login --username mikeaws1 --password ${DOCKER_HUB}
+- echo ${DOCKER_HUB} | docker login --username mikeaws1 --password-stdin
 - docker push mikeaws1/docker_tutorial
 script:
 - docker run -e CI=true mikeaws1/docker_tutorial npm run test -- --coverage
 deploy:
   provider: script
-  script: sh deploy.sh {$DOCKER_HUB}
+  script: sh deploy.sh ${DOCKER_HUB}
   on:
     branch: master
