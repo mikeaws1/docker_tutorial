@@ -4,5 +4,7 @@ ssh -o StrictHostKeyChecking=no travis@${DIGITAL_OCEAN_DROPLET_IP} << ENDSSH
   touch droplettest
   echo "Test sucessful" > droplettest
   echo $1 >> droplettest
-  docker login --username mikeaws1 --password $1
+  echo $1 | docker login --username mikeaws1 --password-stdin
+  docker stop mikeaws1/docker_tutorial
+  docker run mikeaws1/docker_tutorial
 ENDSSH
