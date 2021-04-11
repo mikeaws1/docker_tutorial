@@ -8,7 +8,7 @@ before_install:
 - eval "$(ssh-agent -s)"
 - chmod 600 travis_rsa
 - ssh-add travis_rsa
-- docker build -t mikeaws1/docker_tutorial -f Dockerfile .
+- docker build -t mikeaws1/docker_tutorial -f Dockerfile.dev .
 - echo ${DOCKER_HUB} | docker login --username mikeaws1 --password-stdin
 - docker push mikeaws1/docker_tutorial
 script:
